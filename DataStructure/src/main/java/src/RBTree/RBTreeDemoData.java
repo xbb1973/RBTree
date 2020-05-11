@@ -1,9 +1,11 @@
-package RBTree;
+package src.RBTree;
 
 /**
  * 红黑树Demo原始数据
  * @author lcy
  * @date 2019-12-27
+ * @modifiedBy：xbb
+ * @date ：Created in 2020/5/11 9:29 上午
  */
 public class RBTreeDemoData {
     public RBTreeGen _gen = new RBTreeGen();
@@ -38,7 +40,7 @@ public class RBTreeDemoData {
 
     private TreeUnit createTreeUnit(TreeUnit _parent, float indexNO, boolean isRed) {
         TreeUnit t = new TreeUnit();
-        t.indexNO = indexNO;
+        t.indexNO = (char) indexNO;
         if (isRed) {
             t.color = "red";
             t.isRed = true;

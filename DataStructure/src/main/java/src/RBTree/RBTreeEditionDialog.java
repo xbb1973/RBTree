@@ -1,30 +1,22 @@
-package RBTree;
+package src.RBTree;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * 手动修改红黑树 JDialog
  * @author lcy
  * @date 2019-12-27
+ * @modifiedBy：xbb
+ * @date ：Created in 2020/5/11 9:29 上午
  */
 public class RBTreeEditionDialog extends JDialog {
     private final JPanel contentPanel = new JPanel();
@@ -43,15 +35,15 @@ public class RBTreeEditionDialog extends JDialog {
     private RBTreeCanvas treeCanvas = new RBTreeCanvas();
     private RBTreeGen _gen = new RBTreeGen();
 
-    public static void main(String[] args) {
-        try {
-            RBTreeEditionDialog dialog = new RBTreeEditionDialog();
-            dialog.setDefaultCloseOperation(2);
-            dialog.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    // public static void main(String[] args) {
+    //     try {
+    //         RBTreeEditionDialog dialog = new RBTreeEditionDialog();
+    //         dialog.setDefaultCloseOperation(2);
+    //         dialog.setVisible(true);
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 
     /**
      * 构造函数

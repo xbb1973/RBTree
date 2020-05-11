@@ -1,6 +1,6 @@
-package RBTree;
+package src.RBTree;
 
-import Easis.Common.StringUtil;
+//import Easis.Common.StringUtil;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
 
@@ -15,6 +15,8 @@ import javax.swing.JPanel;
  * 红黑树画布
  * @author lcy
  * @date 2019-12-27
+ * @modifiedBy：xbb
+ * @date ：Created in 2020/5/11 9:29 上午
  */
 public class RBTreeCanvas extends JPanel {
     private mxGraph _graph = new mxGraph();
@@ -27,9 +29,9 @@ public class RBTreeCanvas extends JPanel {
     private int _treeNodeVSep = 50;
     private int _maxNode = 0;
 
-    private ArrayList<ArrayList<GraphNodeViewModel>> _modelContainer = new ArrayList<>();
+    private ArrayList<ArrayList<GraphNodeViewModel>> _modelContainer = new ArrayList<ArrayList<GraphNodeViewModel>>();
     mxGraphComponent _component;
-    HashMap<String, Object> _nodeContainer = new HashMap<>();
+    HashMap<String, Object> _nodeContainer = new HashMap<String, Object>();
 
     public RBTreeCanvas() {
         setBackground(Color.WHITE);
@@ -90,7 +92,7 @@ public class RBTreeCanvas extends JPanel {
         if (_currentUnit == null) {
             return;
         }
-        ArrayList<GraphNodeViewModel> _arrList = new ArrayList<>();
+        ArrayList<GraphNodeViewModel> _arrList = new ArrayList<GraphNodeViewModel>();
         if (this._modelContainer.size() > level && this._modelContainer.get(level) != null) {
             _arrList = this._modelContainer.get(level);
         } else {

@@ -1,32 +1,22 @@
-package RBTree;
+package src.RBTree;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * 红黑树演示样例
  * @author lcy
  * @date 2019-12-27
+ * @modifiedBy：xbb
+ * @date ：Created in 2020/5/11 9:29 上午
  */
 public class RBTreeShow extends JFrame {
     private JPanel contentPane;
@@ -37,6 +27,7 @@ public class RBTreeShow extends JFrame {
     private RBTreeShowData _demoData = new RBTreeShowData();
 
     public static void main(String[] args) {
+
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -48,6 +39,7 @@ public class RBTreeShow extends JFrame {
                 }
             }
         });
+
     }
 
     public RBTreeShow() {

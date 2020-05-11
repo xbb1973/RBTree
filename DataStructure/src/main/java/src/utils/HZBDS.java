@@ -1,4 +1,4 @@
-package utils;
+package src.utils;
 
 import Easis.Common.StringUtil;
 
@@ -36,13 +36,13 @@ public class HZBDS {
         if (originStr == null || originStr.trim().length() <= 0) {
             return null;
         }
-        ArrayList<CaculateUnit> _arr = new ArrayList<>();
+        ArrayList<CaculateUnit> _arr = new ArrayList<CaculateUnit>();
         StringBuilder sb_res = new StringBuilder();
         int preLoc = -1;
         int currentLoc = 0;
         String res = originStr.trim();
-        Stack<CaculateUnit> _opStack = new Stack<>();
-        Stack<CaculateUnit> _ResultStack = new Stack<>();
+        Stack<CaculateUnit> _opStack = new Stack<CaculateUnit>();
+        Stack<CaculateUnit> _ResultStack = new Stack<CaculateUnit>();
         for (int i = 0; i < res.length(); i++) {
             char c1 = res.charAt(i);
             if (c1 == '+' || c1 == '-' || c1 == '*' || c1 == '/') {
@@ -151,7 +151,7 @@ public class HZBDS {
      */
     public float caculateHZS(Stack<CaculateUnit> stack) {
         float res = 0.0F;
-        ArrayList<CaculateUnit> _stackCopy = new ArrayList<>(stack);
+        ArrayList<CaculateUnit> _stackCopy = new ArrayList<CaculateUnit>(stack);
         int opLoc = 0;
         while (_stackCopy.size() > 1) {
             int size = _stackCopy.size();

@@ -1,4 +1,4 @@
-package RBTree;
+package src.RBTree;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
@@ -26,6 +26,8 @@ import javax.swing.border.TitledBorder;
  * 手动调整红黑树 JFrame
  * @author lcy
  * @date 2019-12-27
+ * @modifiedBy：xbb
+ * @date ：Created in 2020/5/11 9:29 上午
  */
 public class RBTreeManual extends JFrame {
     private JPanel contentPane;
@@ -44,19 +46,19 @@ public class RBTreeManual extends JFrame {
     private RBTreeGen _genCopy = new RBTreeGen();
     private JButton btnNewButton_3;
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-                    RBTreeManual frame = new RBTreeManual();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+    // public static void main(String[] args) {
+    //     EventQueue.invokeLater(new Runnable() {
+    //         public void run() {
+    //             try {
+    //                 org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+    //                 RBTreeManual frame = new RBTreeManual();
+    //                 frame.setVisible(true);
+    //             } catch (Exception e) {
+    //                 e.printStackTrace();
+    //             }
+    //         }
+    //     });
+    // }
 
     /**
      * 构造函数
