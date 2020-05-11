@@ -44,7 +44,7 @@ public class RBTreeShow extends JFrame {
 
     public RBTreeShow() {
         setBackground(Color.WHITE);
-        setTitle("红黑树");
+        setTitle("数据结构");
         setDefaultCloseOperation(3);
         setBounds(100, 100, 450, 300);
         this.contentPane = new JPanel();
@@ -175,8 +175,18 @@ public class RBTreeShow extends JFrame {
 //        panel_1.add(this.cbox_showDetails);
 
 
+        JButton restBtn = new JButton("REST");
+        restBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                RBTreeShow.this._gen = new RBTreeGen();
+                RBTreeShow.this.treeCanvas.paintRBTree(RBTreeShow.this._gen._rootNode);
+            }
+        });
+        restBtn.setBackground(Color.WHITE);
+        panel_1.add(restBtn);
+
         JPanel panel = new JPanel();
-        panel.setBorder(new TitledBorder(null, "红黑树演示", 4, 2, null, null));
+        panel.setBorder(new TitledBorder(null, "数据结构演示", 4, 2, null, null));
         panel.setBackground(Color.WHITE);
         this.contentPane.add(panel, "1, 2, fill, fill");
         panel.setLayout(new BorderLayout(0, 0));

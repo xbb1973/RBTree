@@ -1,11 +1,5 @@
 package src.RBTree;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-
 /**
  * @author ：xbb
  * @date ：Created in 2020/5/11 9:29 上午
@@ -19,19 +13,31 @@ public interface ITree<T extends Comparable<T>> {
     //第 12 章介绍了一棵高度为 h 的二叉搜索树， 它可以支持任何 一 种基本动态集合操作，
     //SEARCH、 PREDECESSOR、 SUCCESSOR、 MINIMUM、 MAXIMUM、 INSERT 和 DELETE 等
 
-    void insert();
+    boolean insert(T key);
 
-    void delete();
+    boolean delete(T key);
 
-    void search();
+    Object search(T key);
 
-    void predecessor();
+    Object predecessor();
 
-    void successor();
+    Object successor();
 
-    void maximum();
+    Object predecessor(Object node);
 
-    void minimum();
+    Object successor(Object node);
+
+    Object maximum();
+
+    Object minimum();
+
+    Object maximum(Object node);
+
+    Object minimum(Object node);
+
+    boolean containsKey(T key);
+
+    Object getRootNode();
 
     // int size();
     //

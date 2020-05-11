@@ -9,7 +9,7 @@ package src.RBTree;
  */
 
 public class GraphNodeViewModel {
-    public char indexNO = 'A';
+    public Character indexNO = 'A';
     public boolean isRed = true;
     public int xIndex = 0;
     public int yIndex = 0;
