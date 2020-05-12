@@ -1,4 +1,4 @@
-package src.RBTree;
+package src.Tree;
 
 /**
  * 红黑树Demo原始数据

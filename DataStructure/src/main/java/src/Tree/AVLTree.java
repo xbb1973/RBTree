@@ -1,4 +1,4 @@
-package src.RBTree;
+package src.Tree;
 
 import java.util.ArrayList;
 

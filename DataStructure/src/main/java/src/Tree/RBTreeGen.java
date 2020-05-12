@@ -1,7 +1,7 @@
-package src.RBTree;
+package src.Tree;
 
 /**
- * 红黑树实体 RBTree
+ * 红黑树实体 Tree
  * @author lcy
  * @date 2019-12-27
  * @modifiedBy：xbb

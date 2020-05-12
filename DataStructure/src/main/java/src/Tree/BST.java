@@ -1,4 +1,4 @@
-package src.RBTree;
+package src.Tree;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -425,7 +425,7 @@ public class BST<T extends Comparable> implements ITree<T> {
         if (root == null) {
             return true;
         }
-        Stack<BSTNode<T>> stack = new Stack<>();
+        Stack<BSTNode<T>> stack = new Stack<BSTNode<T>>();
         BSTNode<T> pre = null;
         while (root != null || !stack.isEmpty()) {
             while (root != null) {

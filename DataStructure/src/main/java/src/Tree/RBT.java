@@ -1,6 +1,5 @@
-package src.RBTree;
+package src.Tree;
 
-import com.jhlabs.math.RidgedFBM;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -425,7 +424,7 @@ public class RBT<T extends Comparable<T>> implements ITree<T> {
                     setColor(xBro, getColor(xParent));
                     setBlack(xParent);
                     setBlack(xBro.getLeft());
-                    RidgedFBM(xParent);
+                    rightRotate(xParent);
                     x = root;
                 }
             }
@@ -722,92 +721,4 @@ public class RBT<T extends Comparable<T>> implements ITree<T> {
         }
     }
 
-    /**
-     * @param root
-     * @return
-     * @Description: 判断是否是RBT树
-     * @Date: 2020/5/12
-     * @Author: xbb1973
-     */
-    public boolean isValidBST(RBTNode<T> root) {
-        /*
-        // 解法一、递归，常规思路有问题，需要每次遍历得到左右子树的最大最小值
-        // 无法处理如下情况
-        // [10,5,15,null,null,6,20]
-        //      10
-        //     /  \
-        //    5   15
-        //       /  \
-        //      6   20
-        if (root == null || root.left == null && root.right == null) {
-            return true;
-        }
-        if (isValidBST(root.left)) {
-            if (root.left != null) {
-                if (root.val <= getMaxOfBST(root.left)) {
-                    return false;
-                }
-            }
-        } else {
-            return false;
-        }
-        if (isValidBST(root.right)) {
-            if (root.right != null) {
-                if (root.val >= getMinOfBST(root.right)) {
-                    return false;
-                }
-            }
-        } else {
-            return false;
-        }
-        return true;
-
-        // 解法二、递推，自顶向下，通过[min, max]进行限制
-        // 可以观察到，左孩子的范围是 （父结点左边界，父节点的值），右孩子的范围是（父节点的值，父节点的右边界）。
-        return getAns(root, null, null);
-
-        // 解法三、中序遍历，形成一个递增序列，如果后遍历的数小于先遍历的数则返回false
-        Integer pre = null; // 一开始使用Integer.MIN，不符合测试用例边界需求，使用null代替无穷小
-        if (root == null) return true;
-        Stack<TreeNode> stack = new Stack<>();
-        while (root != null || !stack.isEmpty()) {
-            while (root != null) {
-                stack.push(root);
-                root = root.left;
-            }
-            if (!stack.isEmpty()) {
-                TreeNode pop = stack.pop();
-                if (pre == null) {
-                    pre = pop.val;
-                } else if (pre >= pop.val) {
-                    return false;
-                } else {
-                    pre = pop.val;
-                }
-                root = pop.right;
-            }
-        }
-        return true;
-        */
-
-        // 解法三、中序遍历-改进
-        if (root == null) {
-            return true;
-        }
-        Stack<RBTNode<T>> stack = new Stack<>();
-        RBTNode<T> pre = null;
-        while (root != null || !stack.isEmpty()) {
-            while (root != null) {
-                stack.push(root);
-                root = root.left;
-            }
-            root = stack.pop();
-            if (pre != null && root.key.compareTo(pre.key) <= 0) {
-                return false;
-            }
-            pre = root;
-            root = root.right;
-        }
-        return true;
-    }
 }

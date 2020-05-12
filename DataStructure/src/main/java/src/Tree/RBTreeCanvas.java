@@ -1,4 +1,4 @@
-package src.RBTree;
+package src.Tree;
 
 //import Easis.Common.StringUtil;
 import com.mxgraph.swing.mxGraphComponent;

@@ -1,4 +1,4 @@
-package src.RBTree;
+package src.Tree;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;

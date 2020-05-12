@@ -1,4 +1,4 @@
-package src.RBTree;
+package src.Tree;
 
 /**
  * @author ：xbb
