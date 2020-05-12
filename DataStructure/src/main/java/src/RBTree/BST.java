@@ -3,6 +3,8 @@ package src.RBTree;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Stack;
+
 /**
  * @author ：xbb
  * @date ：Created in 2020/5/11 11:37 上午
@@ -10,7 +12,40 @@ import lombok.EqualsAndHashCode;
  * @modifiedBy：
  * @version:
  */
-public class BST<T extends Comparable<T>> implements ITree<T> {
+public class BST<T extends Comparable> implements ITree<T> {
+
+    public static void main(String[] args) {
+        BST<Integer> t = new BST<Integer>();
+        int[] arry = {5, 2, 7, 3, 6, 4, 8, 1, 9, 0};
+        for (int i = 0; i < arry.length; i++) {
+            t.insert(arry[i]);
+        }
+        System.out.println("创建BST，arry = {5, 2, 7, 3, 6, 4, 8, 1, 9, 0};");
+        System.out.println("先序遍历: ");
+        t.preOrder_iterator(t.root);
+        System.out.println();
+        System.out.println("中序遍历: ");
+        t.inOrder_iterator(t.root);
+        System.out.println();
+        System.out.println("后序遍历: ");
+        t.postOrder_iterator(t.root);
+        System.out.println();
+
+        System.out.println("依次删除结点5, 3, 7");
+        t.delete(5);
+        t.delete(3);
+        t.delete(7);
+        System.out.println("先序遍历: ");
+        t.preOrder_iterator(t.root);
+        System.out.println();
+        System.out.println("中序遍历: ");
+        t.inOrder_iterator(t.root);
+        System.out.println();
+        System.out.println("后序遍历: ");
+        t.postOrder_iterator(t.root);
+        System.out.println();
+
+    }
 
     /**
      * @Description: BST节点类
@@ -37,17 +72,15 @@ public class BST<T extends Comparable<T>> implements ITree<T> {
     }
 
     public boolean insert(BSTNode<T> node) {
-
         // 1、树为空则该节点为根
         if (root == null) {
             root = node;
             return true;
         }
-
         // 2、树不为空，根据key比较，找到pre结点
         BSTNode<T> temp = this.root;
         BSTNode<T> pre = null;
-        while (root != null) {
+        while (temp != null) {
             pre = temp;
             if (node.key.compareTo(temp.key) > 0) {
                 temp = temp.right;
@@ -57,7 +90,6 @@ public class BST<T extends Comparable<T>> implements ITree<T> {
                 return false;
             }
         }
-
         // 3、和pre结点比较，插入
         node.setParent(pre);
         if (node.key.compareTo(pre.key) > 0) {
@@ -91,18 +123,18 @@ public class BST<T extends Comparable<T>> implements ITree<T> {
         return true;
     }
 
-    public boolean delete(Object node) {
-        BSTNode<T> node1 = (BSTNode<T>) node;
-        delete(node1);
-        // 1、删除目标没有左孩子
-
-        // 2、删除目标有且只有一个左孩子
-
-        // 3、删除目标有左右孩子
-
-        // 4、
-        return true;
-    }
+    // public boolean delete(Object node) {
+    //     BSTNode<T> node1 = (BSTNode<T>) node;
+    //     delete(node1);
+    //     // 1、删除目标没有左孩子
+    //
+    //     // 2、删除目标有且只有一个左孩子
+    //
+    //     // 3、删除目标有左右孩子
+    //
+    //     // 4、
+    //     return true;
+    // }
 
     /**
      * @Description:
@@ -287,5 +319,126 @@ public class BST<T extends Comparable<T>> implements ITree<T> {
         if (v != null) {
             v.parent = u.parent;
         }
+    }
+
+    //前序遍历(根左右的)
+    public void preOrder_iterator(BSTNode<T> node ){
+        System.out.print(node.key+" ");
+        if(node.left!=null){
+            preOrder_iterator(node.left);
+        }
+        if(node.right!=null){
+            preOrder_iterator(node.right);
+        }
+    }
+    
+    //中序遍历(左根右)
+    public void inOrder_iterator(BSTNode<T> node ){
+        if(node.left!=null){
+            inOrder_iterator(node.left);
+        }
+        System.out.print(node.key+" ");
+        if(node.right!=null){
+            inOrder_iterator(node.right);
+        }
+    }
+    //后序遍历(左右根)
+    public void postOrder_iterator(BSTNode<T> node ){
+        if(node.left!=null){
+            postOrder_iterator(node.left);
+        }
+        if(node.right!=null){
+            postOrder_iterator(node.right);
+        }
+        System.out.print(node.key+" ");
+    }
+
+    /**
+     * @Description:  判断是否是BST树
+     * @Date: 2020/5/12
+     * @Author: xbb1973
+     * @param root
+     * @return
+     */
+    public boolean isValidBST(BSTNode<T> root) {
+        /*
+        // 解法一、递归，常规思路有问题，需要每次遍历得到左右子树的最大最小值
+        // 无法处理如下情况
+        // [10,5,15,null,null,6,20]
+        //      10
+        //     /  \
+        //    5   15
+        //       /  \
+        //      6   20
+        if (root == null || root.left == null && root.right == null) {
+            return true;
+        }
+        if (isValidBST(root.left)) {
+            if (root.left != null) {
+                if (root.val <= getMaxOfBST(root.left)) {
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+        if (isValidBST(root.right)) {
+            if (root.right != null) {
+                if (root.val >= getMinOfBST(root.right)) {
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+        return true;
+
+        // 解法二、递推，自顶向下，通过[min, max]进行限制
+        // 可以观察到，左孩子的范围是 （父结点左边界，父节点的值），右孩子的范围是（父节点的值，父节点的右边界）。
+        return getAns(root, null, null);
+
+        // 解法三、中序遍历，形成一个递增序列，如果后遍历的数小于先遍历的数则返回false
+        Integer pre = null; // 一开始使用Integer.MIN，不符合测试用例边界需求，使用null代替无穷小
+        if (root == null) return true;
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            if (!stack.isEmpty()) {
+                TreeNode pop = stack.pop();
+                if (pre == null) {
+                    pre = pop.val;
+                } else if (pre >= pop.val) {
+                    return false;
+                } else {
+                    pre = pop.val;
+                }
+                root = pop.right;
+            }
+        }
+        return true;
+        */
+
+        // 解法三、中序遍历-改进
+        if (root == null) {
+            return true;
+        }
+        Stack<BSTNode<T>> stack = new Stack<>();
+        BSTNode<T> pre = null;
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (pre != null && root.key.compareTo(pre.key) <= 0) {
+                return false;
+            }
+            pre = root;
+            root = root.right;
+        }
+        return true;
     }
 }

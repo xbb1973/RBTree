@@ -7,7 +7,7 @@ package src.RBTree;
  * @modifiedBy：
  * @version:
  */
-public interface ITree<T extends Comparable<T>> {
+public interface ITree<T> {
     //搜索树 数 据 结 构支 待 许 多 动 态 集 合 操 作， 包括
     //SEARCH、 MINIMUM、 MAXIMUM、 PREDECESSOR、 SUCCESSOR、 INSERT 和 DELETE
     //第 12 章介绍了一棵高度为 h 的二叉搜索树， 它可以支持任何 一 种基本动态集合操作，

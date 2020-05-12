@@ -1,2 +1,6 @@
 /out/
 /DataStructure/target/
+RBTree.iml
+.gitignore
+.idea
+.DS_Store

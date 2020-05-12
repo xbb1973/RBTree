@@ -76,8 +76,7 @@ public class RBTree<T extends Comparable<T>> {
      */
     private void preOrder(RBTNode<T> tree) {
         if(tree != null) {
-            System.out.print(tree.key+" ");
-            preOrder(tree.left);
+            System.out.print(tree.key+"(" + (colorOf(tree)?"BLACK":"RED") + ")"+" ");            preOrder(tree.left);
             preOrder(tree.right);
         }
     }
@@ -92,7 +91,7 @@ public class RBTree<T extends Comparable<T>> {
     private void inOrder(RBTNode<T> tree) {
         if(tree != null) {
             inOrder(tree.left);
-            System.out.print(tree.key+" ");
+            System.out.print(tree.key+"(" + (colorOf(tree)?"BLACK":"RED") + ")"+" ");
             inOrder(tree.right);
         }
     }
@@ -110,8 +109,7 @@ public class RBTree<T extends Comparable<T>> {
         {
             postOrder(tree.left);
             postOrder(tree.right);
-            System.out.print(tree.key+" ");
-        }
+            System.out.print(tree.key+"(" + (colorOf(tree)?"BLACK":"RED") + ")"+" ");        }
     }
 
     public void postOrder() {
@@ -678,9 +676,9 @@ public class RBTree<T extends Comparable<T>> {
         if(tree != null) {
 
             if(direction==0)    // tree是根节点
-                System.out.printf("%2d(B) is root\n", tree.key);
+                System.out.printf("%2d(BLACK) is root\n", tree.key);
             else                // tree是分支节点
-                System.out.printf("%2d(%s) is %2d's %6s child\n", tree.key, isRed(tree)?"R":"B", key, direction==1?"right" : "left");
+                System.out.printf("%2d(%s) is %2d's %6s child\n", tree.key, isRed(tree)?"RED":"BLACK", key, direction==1?"right" : "left");
 
             print(tree.left, tree.key, -1);
             print(tree.right,tree.key,  1);
@@ -688,6 +686,7 @@ public class RBTree<T extends Comparable<T>> {
     }
 
     public void print() {
+        System.out.println("先序遍历");
         if (mRoot != null)
             print(mRoot, mRoot.key, 0);
     }
